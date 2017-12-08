@@ -91,3 +91,31 @@ services:
     image: helloworld
     restart: always
 ```
+
+## Run Consistent Dev, Stage & Prod Docker Environments
+
+By using the same image, docker will ensure you can run different images for
+dev/staging/production purpose. All the different configurations can be put into
+`.env` file and passed into the image when running.
+
+## Pipe Log Output to STDOUT with Docker
+
+For example, if you have a `debug.log` file which will be written by the App,
+and you want to see the output directly in console, you can do so in
+`dockerfile`
+
+```dockerfile
+FROM mhart/alpine-node
+COPY index.js .
+RUN ln -sf /dev/stdout /debug.log
+CMD node index.js
+```
+
+After this, you can:
+
+```bash
+docker build -t foo .
+docker run -d --name=foo foo
+docker logs -f foo
+docker exec -it foo cat /debug.log           ## make sure no more debug.log will be wrritten
+```
