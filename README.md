@@ -65,3 +65,13 @@ services:
     ports:
       - 8010:8000
 ```
+
+## Use `nginx` for loading balance
+
+* Build `nodejs` image by using `docker build -t app-nodejs .`
+* Run 2 processes with the same image:
+  * `docker run -d -e "SERVER_NAME=chicken" --name=chicken app-nodejs`
+  * `docker run -d -e "SERVER_NAME=steak" --name=steak app-nodejs`
+* Build `nginx` image by using `docker build -t app-nginx .`
+* Run `nginx` image by using `docker run -d -p 8080:80 --link chicken --link
+  steak app-nginx`
