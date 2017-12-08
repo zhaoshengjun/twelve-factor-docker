@@ -21,3 +21,15 @@ Ref: [12factor.net](12factor.net)
 
 `Yarn` will ensure every computer will use the same version of every package.
 You just need to add `yarn.lock` and `package.json` file into source control.
+
+## Use environment variable
+
+Store cridentials into environment variable will not only increase the
+flexibility of the App, but also increase the security level.
+
+To use environment variable, simply append them before the `node` command. E.g.:
+change `node index.js` to `MONGO_URL='mongodb://localhost:27017/foo' node
+index.js` and you can use `process.env.MONGODB_URL` inside your App.
+
+If you have multiple variables, you can put them into `.env` file and use
+`dotenv` package to load them.
