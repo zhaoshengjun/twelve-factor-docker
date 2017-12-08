@@ -33,3 +33,13 @@ index.js` and you can use `process.env.MONGODB_URL` inside your App.
 
 If you have multiple variables, you can put them into `.env` file and use
 `dotenv` package to load them.
+
+## Use Docker
+
+* Run `docker build -t foo/bar:1.0 -t` to build a tagged docker image for
+  release.
+* Create a `docker-compose.yml` for release configuration.
+* Check `.env` is in `.dockerignore` file
+* Run `docker-compose up -d app` to start the release.
+* Run `docker ps` to verify image is running
+* Run `docker logs -f foo_app_1` to check the logs
