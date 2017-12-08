@@ -43,3 +43,9 @@ If you have multiple variables, you can put them into `.env` file and use
 * Run `docker-compose up -d app` to start the release.
 * Run `docker ps` to verify image is running
 * Run `docker logs -f foo_app_1` to check the logs
+
+## Stateless
+
+If we stop/remove (`docker-compose rm -f`) a running docker image, all the data
+will be lost (e.g.: uploaded files). In order to fix this, we need to use
+persistent volume to store the data/files.

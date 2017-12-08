@@ -1,0 +1,7 @@
+{
+  "name": "twelve-factor-docker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sam Zhao <zhao.shengjun@gmail.com> (https://zhaoshengjun.github.io/)",
+  "license": "MIT"
+}
