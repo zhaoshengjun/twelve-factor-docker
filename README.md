@@ -119,3 +119,20 @@ docker run -d --name=foo foo
 docker logs -f foo
 docker exec -it foo cat /debug.log           ## make sure no more debug.log will be wrritten
 ```
+
+## Run One-Off Docker Containers
+
+If you want to run some testing, you can run a docker image and ask to delete it
+after stopping.
+
+```bash
+docker run -it --rm ubunto bash   # start a Ubuntu image and run with bash command
+```
+
+After running this, you can check the status by:
+
+```bash
+docker ps -a
+```
+
+You will see that the image and process are all gone.
