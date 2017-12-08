@@ -49,3 +49,19 @@ If you have multiple variables, you can put them into `.env` file and use
 If we stop/remove (`docker-compose rm -f`) a running docker image, all the data
 will be lost (e.g.: uploaded files). In order to fix this, we need to use
 persistent volume to store the data/files.
+
+## Mapping ports
+
+By default, docker will lock all ports so you won't be able to access it. You
+can change it by exposing the port via:
+
+* Run command `docker run -d -p 8000:8000 foo`
+* Specify mapping in `docker-compose.yml`
+
+```yaml
+services:
+  app:
+    build: .
+    ports:
+      - 8010:8000
+```
