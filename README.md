@@ -75,3 +75,19 @@ services:
 * Build `nginx` image by using `docker build -t app-nginx .`
 * Run `nginx` image by using `docker run -d -p 8080:80 --link chicken --link
   steak app-nginx`
+
+## High-Availability
+
+To ensure the docker image will restart automatcially hence always running, you
+can:
+
+* Run `docker run --restart always`
+* Specify in `docker-compose.yml`:
+
+```yaml
+version: '3'
+services:
+  helloworld:
+    image: helloworld
+    restart: always
+```
